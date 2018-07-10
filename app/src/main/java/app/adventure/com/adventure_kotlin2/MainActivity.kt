@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         btn_main.setOnClickListener {
             var str = edt_main.text
             txt_main.text = str
+            img_main.setImageResource(R.drawable.beer_cup)
         }
     }
 }
