@@ -22,12 +22,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     class MainRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+        var images = arrayOf(R.drawable.drink_1, R.drawable.drink_2, R.drawable.drink_3,
+                             R.drawable.drink_1, R.drawable.drink_2)
+        var titles = arrayOf("Test11", "Test2", "Test3333", "Test 44", "Test555")
+        var contents = arrayOf("하나...", "둘...", "세엣...", "네에엣.....", "다아서어엇..")
         override fun getItemCount(): Int {
-            return 5
+            return images.size
         }
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-            //
+            var view = holder as CustomViewHolder
+            view.imageView!!.setImageResource(images[position])
+            view.textView!!.text = titles[position]
+            view.textView2!!.text = contents[position]
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -39,6 +46,12 @@ class MainActivity : AppCompatActivity() {
             var imageView : ImageView? = null
             var textView : TextView? = null
             var textView2 : TextView? = null
+
+            init {
+                imageView = view!!.findViewById(R.id.img_profile)
+                textView  = view.findViewById(R.id.txt_title)
+                textView2 = view.findViewById(R.id.txt_content)
+            }
         }
 
     }
