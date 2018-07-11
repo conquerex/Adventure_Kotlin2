@@ -7,22 +7,37 @@
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="81dp">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <Spinner
+        android:id="@+id/spn_city"
+        android:layout_width="252dp"
+        android:layout_height="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lyt_tab" />
+        app:layout_constraintTop_toBottomOf="@+id/spn_country" />
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/lyt_tab"
-        android:layout_width="0dp"
-        android:layout_height="58dp"
+    <Spinner
+        android:id="@+id/spn_country"
+        android:layout_width="252dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/spn_city"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </android.support.design.widget.TabLayout>
+    <TextView
+        android:id="@+id/txt_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="City"
+        app:layout_constraintBottom_toTopOf="@+id/spn_city"
+        app:layout_constraintStart_toStartOf="@+id/spn_city" />
+
+    <TextView
+        android:id="@+id/txt_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Country"
+        app:layout_constraintBottom_toTopOf="@+id/spn_country"
+        app:layout_constraintStart_toStartOf="@+id/spn_country" />
 </android.support.constraint.ConstraintLayout>
