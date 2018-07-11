@@ -2,6 +2,7 @@ package app.adventure.com.adventure_kotlin2
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.SeekBar
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -28,5 +29,20 @@ class MainActivity : AppCompatActivity() {
                 .trimIndent()
 
         txt_content.setText(content)
+
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                txt_seek.setText(progress.toString())
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                //
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                //
+            }
+
+        })
     }
 }
