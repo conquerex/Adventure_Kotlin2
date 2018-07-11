@@ -1,5 +1,6 @@
 package app.adventure.com.adventure_kotlin2
 
+import android.os.AsyncTask
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -47,6 +48,29 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this@MainActivity, city + "를 선택했습니다.", Toast.LENGTH_LONG).show()
             }
 
+        }
+
+        doProgressBar()
+    }
+
+    fun doProgressBar() {
+        button3.setOnClickListener {
+            progressBar2.visibility = View.VISIBLE
+        }
+
+        button4.setOnClickListener {
+            var i = 0
+
+            object : AsyncTask<Void, Void, Void>() {
+                override fun doInBackground(vararg params: Void?): Void? {
+                    while (i <= 100) {
+                        progressBar.setProgress(i)
+                        i = i + 2
+                        Thread.sleep(200)
+                    }
+                    return null
+                }
+            }.execute()
         }
     }
 
