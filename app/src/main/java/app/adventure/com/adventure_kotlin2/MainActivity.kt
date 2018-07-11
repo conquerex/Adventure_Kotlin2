@@ -1,7 +1,10 @@
 package app.adventure.com.adventure_kotlin2
 
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
+import android.widget.MediaController
 import android.widget.SeekBar
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -14,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar!!.hide()
 
         var content = """Great beer service starts with fundamentals: beer clean glassware, a proper pour, and beer that hasn’t been ruined by improper handling. And in today’s beer world, every dialog between server and guest begins with talk of beer styles and flavors. The Cicerone Certified Beer Server exam assesses these skills to recognize those individuals who are prepared to serve today’s wide range of beers.
                             Prerequisites: None
@@ -30,6 +34,9 @@ class MainActivity : AppCompatActivity() {
 
         txt_content.setText(content)
 
+        /**
+         * * * * * * * * * * * Seek bar * * * * * * * * * *
+         */
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 txt_seek.setText(progress.toString())
@@ -44,5 +51,23 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+
+        /**
+         * * * * * * * * * * * Video View * * * * * * * * * *
+         */
+        var url = Uri.parse("https://www.rmp-streaming.com/media/bbb-360p.mp4")
+        videoView.setVideoURI(url)
+        videoView.start()
+
+        var controller = MediaController(this)
+        videoView.setMediaController(controller)
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if(hasFocus) {
+            window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN)
+        }
     }
 }

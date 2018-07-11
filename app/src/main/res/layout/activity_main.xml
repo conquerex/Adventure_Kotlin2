@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/black"
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="81dp">
 
@@ -12,17 +13,13 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/drink_1" />
 
     <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        android:id="@+id/scrollView3"
+        android:layout_width="200dp"
+        android:layout_height="311dp"
+        tools:layout_editor_absoluteY="200dp">
 
         <TextView
             android:id="@+id/txt_content"
@@ -35,18 +32,23 @@
         android:id="@+id/seekBar"
         android:layout_width="152dp"
         android:layout_height="19dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/txt_seek" />
+        tools:layout_editor_absoluteX="216dp"
+        tools:layout_editor_absoluteY="119dp" />
 
     <TextView
         android:id="@+id/txt_seek"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:text="TextView"
+        tools:layout_editor_absoluteX="263dp"
+        tools:layout_editor_absoluteY="50dp" />
+
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
