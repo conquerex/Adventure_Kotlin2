@@ -1,12 +1,7 @@
 package app.adventure.com.adventure_kotlin2
 
-import android.os.AsyncTask
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -19,59 +14,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var countryAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, country)
-        spn_country.adapter = countryAdapter
-        spn_country.onItemSelectedListener = object  : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                //
-            }
+        var content = """Great beer service starts with fundamentals: beer clean glassware, a proper pour, and beer that hasn’t been ruined by improper handling. And in today’s beer world, every dialog between server and guest begins with talk of beer styles and flavors. The Cicerone Certified Beer Server exam assesses these skills to recognize those individuals who are prepared to serve today’s wide range of beers.
+                            Prerequisites: None
 
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                var country = parent!!.getItemAtPosition(position)
-                var adapter : ArrayAdapter<String>? = null
-                if(country == "Korea") {
-                    adapter = ArrayAdapter<String>(this@MainActivity, android.R.layout.simple_spinner_dropdown_item, city_kor)
-                } else if(country == "USA") {
-                    adapter = ArrayAdapter<String>(this@MainActivity, android.R.layout.simple_spinner_dropdown_item, city_usa)
-                }
-                spn_city.adapter = adapter
-            }
-        }
+                            Exam Cost: Initial test: ${'$'}69 (USD), Retakes: ${'$'}69 (USD). Exam fees are non-refundable.
 
-        spn_city.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                //
-            }
+                            Purchasing Options: US CBS Exam, International CBS Exam, or you may also purchase BeerSavvy®, our interactive eLearning program, which includes the exam.
 
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                var city = parent!!.getItemAtPosition(position).toString()
-                Toast.makeText(this@MainActivity, city + "를 선택했습니다.", Toast.LENGTH_LONG).show()
-            }
+                            Passing Score: A grade of 75% is required to pass.
 
-        }
+                            Exam Details
+                            The Certified Beer Server exam is a 60-question multiple choice exam, administered online. A grade of 75% is required to pass. Candidates must also pass a short quiz about the Cicerone program. Each payment allows two attempts to achieve a passing score. This is a closed book exam. Candidates are not allowed to refer to any notes, reference materials or accept assistance or advice from anyone else while taking the exam."""
+                .trimIndent()
 
-        doProgressBar()
+        txt_content.setText(content)
     }
-
-    fun doProgressBar() {
-        button3.setOnClickListener {
-            progressBar2.visibility = View.VISIBLE
-        }
-
-        button4.setOnClickListener {
-            var i = 0
-
-            object : AsyncTask<Void, Void, Void>() {
-                override fun doInBackground(vararg params: Void?): Void? {
-                    while (i <= 100) {
-                        progressBar.setProgress(i)
-                        i = i + 2
-                        Thread.sleep(200)
-                    }
-                    return null
-                }
-            }.execute()
-        }
-    }
-
 }
