@@ -1,7 +1,9 @@
 package app.adventure.com.adventure_kotlin2
 
+import android.content.DialogInterface
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.SurfaceHolder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -36,6 +38,23 @@ class MainActivity : AppCompatActivity(), SurfaceHolder.Callback, MediaPlayer.On
         btn_stop.setOnClickListener {
             mediaPlayer!!.pause()
         }
+
+        btn_dialog.setOnClickListener {
+            showDialog()
+        }
+
+    }
+
+    fun showDialog() {
+        var builder = AlertDialog.Builder(this)
+        builder.setTitle("알림")
+        builder.setMessage("앱을 종료하시겠습니까?")
+        builder.setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, which ->
+            onBackPressed()
+        })
+        builder.setNegativeButton("No", DialogInterface.OnClickListener { dialog, which ->
+            dialog.dismiss()
+        }).show()
 
     }
 
