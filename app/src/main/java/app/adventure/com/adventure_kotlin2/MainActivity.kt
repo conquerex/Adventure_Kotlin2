@@ -7,6 +7,38 @@ import android.view.SurfaceHolder
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), SurfaceHolder.Callback, MediaPlayer.OnPreparedListener {
+
+
+    var surfaceHolder : SurfaceHolder? = null
+    var mediaPlayer : MediaPlayer? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        surfaceHolder = surfaceView.holder
+        surfaceHolder!!.addCallback(this) // 상단에 implement된 것을 연결
+
+        btn_back.setOnClickListener {
+            var position = mediaPlayer!!.currentPosition - 3000
+            mediaPlayer!!.seekTo(position)
+        }
+
+        btn_fast.setOnClickListener {
+            var position = mediaPlayer!!.currentPosition + 3000
+            mediaPlayer!!.seekTo(position)
+        }
+
+        btn_start.setOnClickListener {
+            mediaPlayer!!.start()
+        }
+
+        btn_stop.setOnClickListener {
+            mediaPlayer!!.pause()
+        }
+
+    }
+
     override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {
         //
     }
@@ -28,14 +60,4 @@ class MainActivity : AppCompatActivity(), SurfaceHolder.Callback, MediaPlayer.On
         mediaPlayer!!.start()
     }
 
-    var surfaceHolder : SurfaceHolder? = null
-    var mediaPlayer : MediaPlayer? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        surfaceHolder = surfaceView.holder
-        surfaceHolder!!.addCallback(this) // 상단에 implement된 것을 연결
-
-    }}
+}
