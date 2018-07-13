@@ -1,9 +1,8 @@
 package app.adventure.com.adventure_kotlin2
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
+import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -12,18 +11,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction().replace(R.id.lyt_frame, Fragment1()).commit()
+//        supportFragmentManager.beginTransaction().replace(R.id.lyt_frame, Fragment1()).commit()
 
-        Toast.makeText(this, "Use 'this'", Toast.LENGTH_LONG).show()
+        // SharedPreference 객체
+        var sp = PreferenceManager.getDefaultSharedPreferences(this)
 
-        btn_toast.setOnClickListener {
-            Toast.makeText(this, "Toast message", Toast.LENGTH_LONG).show()
+        // SharedPreference 수정 객체
+        var edit = sp.edit()
+        var saveString = sp.getString("userId", "아이디 입력하세요.")
+        edt_name.setText(saveString)
+
+        btn_save.setOnClickListener {
+            edit.putString("userId", edt_name.text.toString()).commit()
         }
-
-        btn_snack.setOnClickListener {
-            Snackbar.make(lyt_main, "Snackbar message", Snackbar.LENGTH_LONG).show()
-
-        }
-
     }
 }
