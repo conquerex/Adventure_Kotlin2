@@ -10,6 +10,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        supportFragmentManager.beginTransaction().replace(R.id.lyt_main, Fragment1())
+                .commit()
+
         btn_move.setOnClickListener {
             var intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
