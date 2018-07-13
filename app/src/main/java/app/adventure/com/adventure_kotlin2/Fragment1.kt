@@ -15,4 +15,28 @@ class Fragment1 : Fragment() {
 
         return view
     }
+
+    override fun onStart() {
+        super.onStart()
+    }
+
+    // 프래그먼트 나타나기 전
+    override fun onResume() {
+        super.onResume()
+    }
+
+    // 반만 가려진 상태
+    override fun onPause() {
+        super.onPause()
+    }
+
+    // 정지
+    override fun onStop() {
+        super.onStop()
+    }
+
+    // 프래그먼트 제거
+    override fun onDetach() {
+        super.onDetach()
+    }
 }

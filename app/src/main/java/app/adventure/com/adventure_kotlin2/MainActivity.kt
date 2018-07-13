@@ -1,22 +1,23 @@
 package app.adventure.com.adventure_kotlin2
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    var fragment1 = Fragment1()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction().replace(R.id.lyt_main, Fragment1())
+        supportFragmentManager.beginTransaction().replace(R.id.lyt_main, fragment1)
                 .commit()
 
-        btn_move.setOnClickListener {
-            var intent = Intent(this, SecondActivity::class.java)
-            startActivity(intent)
+        btn_del.setOnClickListener {
+            supportFragmentManager.beginTransaction().remove(fragment1)
+                    .commit()
         }
     }
 
