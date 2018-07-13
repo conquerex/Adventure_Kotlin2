@@ -12,6 +12,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        supportFragmentManager.beginTransaction().replace(R.id.lyt_frame, Fragment1()).commit()
+
+        Toast.makeText(this, "Use 'this'", Toast.LENGTH_LONG).show()
+
         btn_toast.setOnClickListener {
             Toast.makeText(this, "Toast message", Toast.LENGTH_LONG).show()
         }
