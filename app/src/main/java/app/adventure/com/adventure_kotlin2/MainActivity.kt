@@ -1,48 +1,25 @@
 package app.adventure.com.adventure_kotlin2
 
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
-    var fragment1 = Fragment1()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction().replace(R.id.lyt_main, fragment1)
-                .commit()
-
-        btn_del.setOnClickListener {
-            supportFragmentManager.beginTransaction().remove(fragment1)
-                    .commit()
+        btn_toast.setOnClickListener {
+            Toast.makeText(this, "Toast message", Toast.LENGTH_LONG).show()
         }
-    }
 
-    override fun onStart() {
-        super.onStart()
-        println("1. 액티비티가 생성될때")
-    }
+        btn_snack.setOnClickListener {
+            Snackbar.make(lyt_main, "Snackbar message", Snackbar.LENGTH_LONG).show()
 
-    override fun onResume() {
-        super.onResume()
-        println("2. 액티비티가 화면에 나타나고")
-    }
+        }
 
-    override fun onPause() {
-        super.onPause()
-        println("3. 사라지기 전에 혹은 반만 가려지거나 반투명")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        println("4. 사라진 이후에")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        println("5. 완전히 메모리에서 제거될 때")
     }
 }
